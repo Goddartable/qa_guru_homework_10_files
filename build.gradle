@@ -12,7 +12,6 @@ repositories {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2',
             'com.google.guava:guava:31.1-jre',
-            'com.codeborne:selenide:6.6.3',
             'org.assertj:assertj-core:3.23.1',
             'com.codeborne:pdf-test:1.5.0',
             'com.codeborne:xls-test:1.4.3',

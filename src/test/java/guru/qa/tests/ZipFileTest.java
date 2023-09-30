@@ -20,6 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ZipFileTest {
     private String pathToPrepackageFile = "src/test/resources/zip/files.zip";
+
     @Test
     @DisplayName("Проверка содержимого zip-архива")
     void checkingTheZipContents() throws IOException, CsvException {
