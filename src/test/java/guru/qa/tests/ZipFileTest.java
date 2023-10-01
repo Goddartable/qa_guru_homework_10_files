@@ -24,6 +24,7 @@ public class ZipFileTest {
     @Test
     @DisplayName("Проверка pdf")
     void checkingThePdf() throws IOException, CsvException {
+
         try (ZipInputStream zipInputStream = new ZipInputStream(new FileInputStream(pathToPrepackageFile))) {
             ZipEntry entry;
             while ((entry = zipInputStream.getNextEntry()) != null) {
