@@ -3,15 +3,12 @@ package guru.qa.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class JsonUser {
-    @JsonProperty("id")
     private String id;
-    @JsonProperty("email")
     private String email;
     @JsonProperty("first_name")
-    private String first_name;
+    private String firstName;
     @JsonProperty("last_name")
-    private String last_name;
-    @JsonProperty("avatar")
+    private String lastName;
     private String avatar;
 
     public String getId() {
@@ -31,19 +28,19 @@ public class JsonUser {
     }
 
     public String getFirstName() {
-        return first_name;
+        return firstName;
     }
 
     public void setFirstName(String first_name) {
-        this.first_name = first_name;
+        this.firstName = first_name;
     }
 
     public String getLastName() {
-        return last_name;
+        return lastName;
     }
 
     public void getLastName(String last_name) {
-        this.last_name = last_name;
+        this.lastName = last_name;
     }
 
     public String getAvatar() {
