@@ -22,8 +22,8 @@ public class ZipFileTest {
     private String pathToPrepackageFile = "src/test/resources/zip/files.zip";
 
     @Test
-    @DisplayName("Проверка содержимого zip-архива")
-    void checkingTheZipContents() throws IOException, CsvException {
+    @DisplayName("Проверка pdf")
+    void checkingThePdf() throws IOException, CsvException {
         try (ZipInputStream zipInputStream = new ZipInputStream(new FileInputStream(pathToPrepackageFile))) {
             ZipEntry entry;
             while ((entry = zipInputStream.getNextEntry()) != null) {
@@ -32,6 +32,18 @@ public class ZipFileTest {
                         PDF pdf = new PDF(zipInputStream);
                         assertThat(pdf.text).contains("Hello World");
                         break;
+                }
+            }
+        }
+    }
+
+    @Test
+    @DisplayName("Проверка xlsx")
+    void checkingTheXsls() throws IOException, CsvException {
+        try (ZipInputStream zipInputStream = new ZipInputStream(new FileInputStream(pathToPrepackageFile))) {
+            ZipEntry entry;
+            while ((entry = zipInputStream.getNextEntry()) != null) {
+                switch (entry.getName().substring(((ZipEntry) entry).getName().lastIndexOf('.'))) {
                     case ".xlsx":
                         XLS xls = new XLS(zipInputStream);
                         assertThat(xls.excel.getSheetAt(0)
@@ -39,6 +51,18 @@ public class ZipFileTest {
                                 .getCell(0)
                                 .getStringCellValue()).contains("plain text");
                         break;
+                }
+            }
+        }
+    }
+
+    @Test
+    @DisplayName("Проверка csv")
+    void checkingTheCsv() throws IOException, CsvException {
+        try (ZipInputStream zipInputStream = new ZipInputStream(new FileInputStream(pathToPrepackageFile))) {
+            ZipEntry entry;
+            while ((entry = zipInputStream.getNextEntry()) != null) {
+                switch (entry.getName().substring(((ZipEntry) entry).getName().lastIndexOf('.'))) {
                     case ".csv":
                         CSVReader csvFileReader = new CSVReader(new InputStreamReader(zipInputStream, UTF_8));
                         List<String[]> csvList = csvFileReader.readAll();
@@ -47,5 +71,8 @@ public class ZipFileTest {
                 }
             }
         }
+
     }
+
+
 }
